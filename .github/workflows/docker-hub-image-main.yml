@@ -12,7 +12,8 @@ permissions:
   contents: read
 env:
   REGISTRY: ghcr.io
-  DOCKER_IMAGE: ghcr.io/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}:custom
+  AGENT_VERSION: 4.7.1
+  DOCKER_IMAGE: ghcr.io/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
@@ -37,5 +38,5 @@ jobs:
       - id: build-docker-image
         name: Build and Publish docker image
         run: |
-         docker build . -t ${DOCKER_IMAGE}
-         docker push ${DOCKER_IMAGE}
+         docker build . -t ${DOCKER_IMAGE}:${AGENT_VERSION}
+         docker push ${DOCKER_IMAGE}:${AGENT_VERSION}
