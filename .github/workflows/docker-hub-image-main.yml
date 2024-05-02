@@ -37,5 +37,5 @@ jobs:
       - id: build-docker-image
         name: Build and Publish docker image
         run: |
-         docker build . -f images/Dockerfile.ubuntu -t ${DOCKER_IMAGE}
+         docker build . -t ${DOCKER_IMAGE}
          docker push ${DOCKER_IMAGE}
